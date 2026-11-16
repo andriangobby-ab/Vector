@@ -1,15 +1,15 @@
 {
   "name": "VectorFlux 8x8",
   "short_name": "VectorFlux",
-  "start_url": "/Vector/index.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0F141C",
   "theme_color": "#0F141C",
   "orientation": "portrait",
-  "description": "Динамичная головоломка 8x8 с векторными импульсами и модулями правил",
+  "description": "Динамичная головоломка 8x8 с векторными импульсами",
   "icons": [
     {
-      "src": "/Vector/icon-512.png",
+      "src": "./Icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
