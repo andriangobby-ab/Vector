@@ -1,40 +1,39 @@
-const CACHE_NAME = 'vectorflux-cache-v2';
-const FILES_TO_CACHE = [
+const CACHE_NAME = 'offline-game-v1';
+const urlsToCache = [
+  './',
   './index.html',
   './manifest.json',
-  './Icon-512.png'
+  './192.png',
+  './512.png'
 ];
 
+// Установка и кеширование
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(FILES_TO_CACHE);
-    })
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(urlsToCache))
   );
-  self.skipWaiting();
 });
 
+// Перехват запросов (работа оффлайн)
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then((response) => response || fetch(event.request))
+  );
+});
+
+// Обновление кеша
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keyList) => {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        keyList.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
           }
         })
       );
-    })
-  );
-  self.clients.claim();
-});
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request).catch(() => {
-        return caches.match('./index.html');
-      });
     })
   );
 });
