@@ -9,7 +9,7 @@
   "description": "Динамичная головоломка 8x8 с векторными импульсами и модулями правил",
   "icons": [
     {
-      "src": "/Vector/Icon-512.png",
+      "src": "/Vector/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
