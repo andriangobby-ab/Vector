@@ -2,7 +2,7 @@
   "name": "VectorFlux 8x8",
   "short_name": "VectorFlux",
   "start_url": "./index.html",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#0F141C",
   "theme_color": "#0F141C",
   "orientation": "portrait",
